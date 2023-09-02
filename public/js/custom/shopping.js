@@ -191,3 +191,35 @@ function validateName(name) {
     }
 }
 
+function checkedItem(element) {
+    const id = $(element).data('id');
+    const status_id = ($(element).is(':checked')) ? 2 : 1;
+
+    $.ajax({
+        url: "/shopping-items/" + id,
+        type: "PUT",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: JSON.stringify({ status_id: status_id }),
+        contentType: "application/json",
+        cache: false,
+        success: function (data) {
+            $("#modalEditItem .close").click()
+            $('.toast-body').html(data.message);
+            $('.toast').toast('show');
+            if (data.status == 'success') {
+                listItems();
+                return true;
+            }
+            return false;
+        },
+        error: function (data) {
+            console.log(data);
+            $.each(data.responseJSON.errors, function (key, errors) {
+                $('.toast-body').html(errors);
+                $('.toast').toast('show');
+            });
+        }
+    });
+}
