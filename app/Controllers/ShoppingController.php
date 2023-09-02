@@ -50,4 +50,11 @@ class ShoppingController
         $this->showResponse($response);
     }
 
+    public function delete()
+    {
+        $response = $this->shopping_service->delete([
+            'id' => $_SERVER['item_id']
+        ]);
+        $this->showResponse($response);
+    }
 }

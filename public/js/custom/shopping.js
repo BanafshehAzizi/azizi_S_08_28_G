@@ -99,6 +99,43 @@ function listItems() {
     });
 }
 
+function deleteItem(element) {
+    const id = $(element).data('id');
+    const name = $(element).data('name');
+    $('.modalDeleteItemLabel').html('delete item' + name);
+    $('#confirmDeleteItem').data('id', id);
+}
+
+function confirmDeleteItem(element) {
+    const id = $(element).data('id');
+    $.ajax({
+        url: "/shopping-items/" + id,
+        type: "DELETE",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: {id: id},
+        cache: false,
+        success: function (data) {
+            // $('#modalDeleteItem').modal('hide')
+            $("#modalDeleteItem .close").click()
+            $('.toast-body').html(data.message);
+            $('.toast').toast('show');
+            if (data.status == 'success') {
+                listItems();
+                return true;
+            }
+            return false;
+        },
+        error: function (data) {
+            $.each(data.responseJSON.errors, function (key, errors) {
+                $('.toast-body').html(errors);
+                $('.toast').toast('show');
+            });
+        }
+    });
+}
+
 function validateName(name) {
     const nameRegex = /^[a-zA-Z][a-zA-Z0-9]*$/;
     if (name === undefined || name.trim() === "" || !nameRegex.test(name)) {
