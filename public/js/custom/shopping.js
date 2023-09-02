@@ -136,6 +136,52 @@ function confirmDeleteItem(element) {
     });
 }
 
+function editItem(element) {
+    const id = $(element).data('id');
+    $('#confirmEditItem').data('id', id);
+    const name = $(element).data('name');
+    $('#editItemName').val(name);
+    $('.modalEditItemLabel').html('Edit item ' + name);
+}
+
+function confirmEditItem(element) {
+    const id = $(element).data('id');
+    const name = $('#editItemName').val();
+
+    const validate = validateName(name);
+    if (validate == false) {
+        return false;
+    }
+
+    $.ajax({
+        url: "/shopping-items/" + id,
+        type: "PUT",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        data: JSON.stringify({ name: name }),
+        contentType: "application/json",
+        cache: false,
+        success: function (data) {
+            $("#modalEditItem .close").click()
+            $('.toast-body').html(data.message);
+            $('.toast').toast('show');
+            if (data.status == 'success') {
+                listItems();
+                return true;
+            }
+            return false;
+        },
+        error: function (data) {
+            console.log(data);
+            $.each(data.responseJSON.errors, function (key, errors) {
+                $('.toast-body').html(errors);
+                $('.toast').toast('show');
+            });
+        }
+    });
+}
+
 function validateName(name) {
     const nameRegex = /^[a-zA-Z][a-zA-Z0-9]*$/;
     if (name === undefined || name.trim() === "" || !nameRegex.test(name)) {

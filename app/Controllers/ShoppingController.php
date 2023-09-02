@@ -57,4 +57,20 @@ class ShoppingController
         ]);
         $this->showResponse($response);
     }
+
+    public function update()
+    {
+        $body = file_get_contents("php://input");
+        $data = json_decode($body);
+        $name = $data->name ?? null;
+        $status_id = $data->status_id ?? null;
+        $input = [
+            'name' => $name,
+            'status_id' => $status_id,
+            'id' => $_SERVER['item_id']
+        ];
+        $input = array_filter($input);
+        $response = $this->shopping_service->update($input);
+        $this->showResponse($response);
+    }
 }
