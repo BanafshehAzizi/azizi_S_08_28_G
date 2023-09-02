@@ -102,7 +102,7 @@ function listItems() {
 function deleteItem(element) {
     const id = $(element).data('id');
     const name = $(element).data('name');
-    $('.modalDeleteItemLabel').html('delete item' + name);
+    $('.modalDeleteItemLabel').html('delete item ' + name);
     $('#confirmDeleteItem').data('id', id);
 }
 
