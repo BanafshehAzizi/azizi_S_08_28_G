@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>سبد خرید</title>
     <link href="public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="public/css/custom/shopping.css" rel="stylesheet">
     <script src="public/js/jquery/jquery-3.7.1.min.js"></script>
     <script src="public/js/bootstrap/bootstrap.min.js"></script>
     <script src="public/js/jquery/jquery.form.min.js"></script>
