@@ -5,7 +5,7 @@ use Core\Database;
 require_once '../config/app.php';
 require_once '../config/database.php';
 require_once '../vendor/autoload.php';
-require_once '../routes/web.php';
+require_once '../routes/api.php';
 
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = $_SERVER['REQUEST_URI'];

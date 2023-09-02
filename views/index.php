@@ -6,11 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>سبد خرید</title>
-    <link href="public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="public/css/custom/shopping.css" rel="stylesheet">
-    <script src="public/js/jquery/jquery-3.7.1.min.js"></script>
-    <script src="public/js/bootstrap/bootstrap.min.js"></script>
-    <script src="public/js/jquery/jquery.form.min.js"></script>
+    <link href="/public/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/public/css/custom/shopping.css" rel="stylesheet">
+    <script src="/public/js/jquery/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/public/js/jquery/jquery.form.min.js"></script>
 </head>
 <body>
 <header>
@@ -27,7 +27,7 @@
 <main class="container-fluid mt-3">
     <section class="row justify-content-center text-center mb-3">
         <div class="col-md-6">
-            <img src="public/images/shopping-cart-Icon.svg" alt="shopping cart">
+            <img src="/public/images/shopping-cart-Icon.svg" alt="shopping cart">
             <h1 class="mb-3">Shooping List</h1>
 
             <form id="add_item_form" method="post">
@@ -123,6 +123,6 @@
         </div>
     </div>
 </div>
-<script src="public/js/custom/shopping.js"></script>
+<script src="/public/js/custom/shopping.js"></script>
 </body>
 </html>
