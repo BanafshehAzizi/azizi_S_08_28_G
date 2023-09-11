@@ -11,6 +11,7 @@
     <script src="/shopping_list/public/js/jquery/jquery-3.7.1.min.js"></script>
     <script src="/shopping_list/public/js/bootstrap/bootstrap.min.js"></script>
     <script src="/shopping_list/public/js/jquery/jquery.form.min.js"></script>
+    <script src="/shopping_list/public/js/custom/check_token.js"></script>
 </head>
 <body>
 <header>

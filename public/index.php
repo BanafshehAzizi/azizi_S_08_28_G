@@ -4,6 +4,7 @@ use Core\Database;
 
 require_once '../config/app.php';
 require_once '../config/database.php';
+//require_once '../config/protected.php';
 require_once '../vendor/autoload.php';
 require_once '../routes/api.php';
 
@@ -21,6 +22,20 @@ switch ($routeInfo[0]) {
         break;
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
+//        if (in_array($handler, [
+//            'App\Controllers\ShoppingController@index',
+//            'App\Controllers\ShoppingController@list',
+//            'App\Controllers\ShoppingController@insert',
+//            'App\Controllers\ShoppingController@update',
+//            'App\Controllers\ShoppingController@delete'
+//        ])) {
+//            if(jwtAuth($handler) == false) {
+//                http_response_code(401);
+//                echo json_encode(array('message' => 'Access denied.'));
+//                return;
+//            }
+//        }
+
         $handler = explode('@', $handler);
         $controller_name = $handler[0];
         $method_name = $handler[1];

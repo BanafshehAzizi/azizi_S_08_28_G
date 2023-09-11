@@ -43,7 +43,6 @@ class ShoppingService extends AbstractBaseService
         try {
             $this->deleteService($input);
         }catch (\Exception $exception) {
-            var_dump($exception);
             return ['status' => 'success', 'message' => 'The request has been done successfully.'];
         }
         return ['status' => 'success', 'message' => 'The request has been done successfully.'];

@@ -29,11 +29,14 @@ function addItem() {
         return false;
     }
 
+    const token = localStorage.getItem('token');
+
     $.ajax({
         url: "/shopping_list/api/v1/shopping-items",
         type: "POST",
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Authorization': 'Bearer ' + token
         },
         data: {
             name: name
@@ -59,11 +62,14 @@ function addItem() {
 
 
 function listItems() {
+    const token = localStorage.getItem('token');
+
     $.ajax({
         url: "/shopping_list/api/v1/shopping-items",
         type: "GET",
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Authorization': 'Bearer ' + token
         },
         data: {},
         cache: true,
@@ -108,11 +114,14 @@ function deleteItem(element) {
 
 function confirmDeleteItem(element) {
     const id = $(element).data('id');
+    const token = localStorage.getItem('token');
+
     $.ajax({
         url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "DELETE",
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Authorization': 'Bearer ' + token
         },
         data: {id: id},
         cache: false,
@@ -153,11 +162,14 @@ function confirmEditItem(element) {
         return false;
     }
 
+    const token = localStorage.getItem('token');
+
     $.ajax({
         url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "PUT",
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Authorization': 'Bearer ' + token
         },
         data: JSON.stringify({ name: name }),
         contentType: "application/json",
@@ -195,11 +207,14 @@ function checkedItem(element) {
     const id = $(element).data('id');
     const status_id = ($(element).is(':checked')) ? 2 : 1;
 
+    const token = localStorage.getItem('token');
+
     $.ajax({
         url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "PUT",
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+            'Authorization': 'Bearer ' + token
         },
         data: JSON.stringify({ status_id: status_id }),
         contentType: "application/json",
