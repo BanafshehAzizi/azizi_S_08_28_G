@@ -30,7 +30,12 @@ function insert() {
         success: function (data) {
             $('.toast-body').html(data.message);
             $('.toast').toast('show');
+            console.log(data);
             if (data.status == 'success') {
+                console.log('ssssssssssss');
+                const token = data.response.token;
+                localStorage.setItem('token', token);
+                window.location.href = '/shopping_list/api/v1/shopping-list';
                 return true;
             }
             return false;

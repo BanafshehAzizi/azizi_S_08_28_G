@@ -34,7 +34,20 @@ class UserService extends AbstractBaseService
             return ['status' => 'error', 'message' => 'The request has been done unsuccessfully.'];
         }
 
-        return ['status' => 'success', 'message' => 'The request has been done successfully.'];
+        try {
+            $response = $this->showService([
+                'where' => 'username = "' . $_POST['username'] . '" and password="' . md5($_POST['password']) . '"'
+            ]);
+        } catch (\Exception $exception) {
+            return ['status' => 'error', 'message' => 'The username or password is incorrect.'];
+        }
+
+        $token = $this->jwt_service->generateToken($response[0]);
+        $response = ['token' => $token];
+
+        return ['status' => 'success', 'message' => 'The request has been done successfully.', 'response' => $response];
+
+//        return ['status' => 'success', 'message' => 'The request has been done successfully.'];
     }
 
     public function show($input)
