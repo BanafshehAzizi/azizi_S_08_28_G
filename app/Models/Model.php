@@ -57,7 +57,8 @@ abstract class Model
 
     public function show($input)
     {
-        $query = 'SELECT * FROM ' . $this->table . ' where id="' . $input['id'] . '"';
+//        $query = 'SELECT * FROM ' . $this->table . ' where id="' . $input['id'] . '"';
+        $query = 'SELECT * FROM ' . $this->table . ' where '.$input['column_name'] .'="' . $input['column_value'] . '"';
         $statement = $this->connection->query($query);
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $results;

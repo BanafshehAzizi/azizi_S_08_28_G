@@ -1,5 +1,5 @@
 <?php
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'shopping_list');
+define('DB_PASS', 'password');
+define('DB_NAME', 'azizi_shopping_list');

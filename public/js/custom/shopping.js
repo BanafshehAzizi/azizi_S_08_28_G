@@ -30,7 +30,7 @@ function addItem() {
     }
 
     $.ajax({
-        url: "/api/v1/shopping-items",
+        url: "/shopping_list/api/v1/shopping-items",
         type: "POST",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -60,7 +60,7 @@ function addItem() {
 
 function listItems() {
     $.ajax({
-        url: "/api/v1/shopping-items",
+        url: "/shopping_list/api/v1/shopping-items",
         type: "GET",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -109,7 +109,7 @@ function deleteItem(element) {
 function confirmDeleteItem(element) {
     const id = $(element).data('id');
     $.ajax({
-        url: "/api/v1/shopping-items/" + id,
+        url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "DELETE",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -154,7 +154,7 @@ function confirmEditItem(element) {
     }
 
     $.ajax({
-        url: "/api/v1/shopping-items/" + id,
+        url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "PUT",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -196,7 +196,7 @@ function checkedItem(element) {
     const status_id = ($(element).is(':checked')) ? 2 : 1;
 
     $.ajax({
-        url: "/api/v1/shopping-items/" + id,
+        url: "/shopping_list/api/v1/shopping-items/" + id,
         type: "PUT",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

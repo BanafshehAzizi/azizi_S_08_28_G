@@ -4,7 +4,6 @@
 namespace Core;
 require_once '../config/database.php';
 
-
 abstract class Migration
 {
     private $database;

@@ -22,7 +22,11 @@ class ShoppingItemUpdateRequest
         }
 
         $model = new ShoppingItems();
-        $function = $model->show(['id' => $_SERVER['item_id']]);
+//        $function = $model->show(['id' => $_SERVER['item_id']]);
+        $function = $model->show([
+            'column_name' => 'id',
+            'column_value' => $_SERVER['item_id']
+        ]);
         if (!empty($_SERVER['item_id']) && empty($function)) {
             return ['status' => 'error', 'message' => 'The item id field is invalid.'];
         }
@@ -32,8 +36,11 @@ class ShoppingItemUpdateRequest
         }
 
         $model = new ShoppingItemsStatus();
-        $function = $model->show(['id' => $status_id]);
-
+//        $function = $model->show(['id' => $status_id]);
+        $function = $model->show([
+            'column_name' => 'id',
+            'column_value' => $status_id
+        ]);
         if (!empty($status_id) && empty($function)) {
             return ['status' => 'error', 'message' => 'The item status_id field is invalid.'];
         }
