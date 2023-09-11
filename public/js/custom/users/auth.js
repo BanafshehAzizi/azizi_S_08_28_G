@@ -28,7 +28,6 @@ function login() {
         },
         cache: false,
         success: function (data) {
-            console.log(data);
             $('.toast-body').html(data.message);
             $('.toast').toast('show');
             if (data.status == 'success') {
