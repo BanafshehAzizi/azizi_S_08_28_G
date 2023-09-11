@@ -4,6 +4,8 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $rout
     $route->addRoute('GET', '/shopping_list/api/v1/register', 'App\Controllers\UserController@viewRegister');
     $route->addRoute('POST', '/shopping_list/api/v1/register', 'App\Controllers\UserController@register');
 
+    $route->addRoute('GET', '/shopping_list/api/v1/login', 'App\Controllers\AuthController@viewLogin');
+    $route->addRoute('POST', '/shopping_list/api/v1/login', 'App\Controllers\AuthController@login');
 
     $route->addRoute('GET', '/shopping_list/api/v1/shopping-list', 'App\Controllers\ShoppingController@index');
     $route->addRoute('GET', '/shopping_list/api/v1/shopping-items', 'App\Controllers\ShoppingController@list');

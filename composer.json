@@ -5,7 +5,8 @@
     "nikic/fast-route": "^1.3",
     "ext-pdo": "*",
     "ext-http": "*",
-    "ext-cassandra": "*"
+    "ext-cassandra": "*",
+    "firebase/php-jwt": "^6.8"
   },
   "autoload": {
     "psr-4": {

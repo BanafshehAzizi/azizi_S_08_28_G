@@ -27,7 +27,7 @@
 <main class="container-fluid mt-3">
     <section class="row justify-content-center text-center mb-3">
         <div class="col-md-6">
-            <h1 class="mb-3">Register</h1>
+            <h1 class="mb-3">Login</h1>
             <form id="add_item_form" method="post">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Username" id="username" required>
@@ -36,12 +36,12 @@
                     <input type="password" class="form-control" placeholder="Password" id="password" required>
                 </div>
                 <div class="input-group mb-3">
-                    <button class="btn btn-primary" type="button" id="register" onclick="insert()">Register</button>
+                    <button class="btn btn-primary" type="button" id="register" onclick="login()">Login</button>
                 </div>
             </form>
         </div>
     </section>
 </main>
-<script src="/shopping_list/public/js/custom/users/user.js"></script>
+<script src="/shopping_list/public/js/custom/users/auth.js"></script>
 </body>
 </html>

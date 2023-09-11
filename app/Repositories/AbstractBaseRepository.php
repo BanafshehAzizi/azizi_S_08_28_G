@@ -45,11 +45,8 @@ abstract class AbstractBaseRepository
         return $this->model->findOrFail($input['id'], $input['columns']);
     }*/
 
-/*    public function showRepository($input)
+    public function showRepository($input)
     {
-        $function = $this->model->where($input['where']);//->orWhere($input['or_where']);
-        return $function
-            ->orderBy($input['order_by_column'], $input['order_by_direction'])
-            ->first();
-    }*/
+        return $this->model->show($input);//->orWhere($input['or_where']);
+    }
 }

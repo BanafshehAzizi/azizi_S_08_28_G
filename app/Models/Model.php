@@ -30,12 +30,12 @@ abstract class Model
 
     public function update($input)
     {
-/*        if (empty($this->show(['id' => $input['id']]))) {
-            throw new ValidationException('The item id is invalid', 422);
-        }*/
-            $set = implode(' and ', array_map(function ($key, $value) {
-                return $key . '="' . $value . '"';
-            }, array_keys($input['input']), $input['input']));
+        /*        if (empty($this->show(['id' => $input['id']]))) {
+                    throw new ValidationException('The item id is invalid', 422);
+                }*/
+        $set = implode(' and ', array_map(function ($key, $value) {
+            return $key . '="' . $value . '"';
+        }, array_keys($input['input']), $input['input']));
         $this->connection->query('update ' . $this->table . ' set ' . $set . ' where id="' . $input['id'] . '"');
     }
 
@@ -57,8 +57,10 @@ abstract class Model
 
     public function show($input)
     {
+        $input['where'] ??= $input['column_name'] . '="' . $input['column_value'] . '"';
 //        $query = 'SELECT * FROM ' . $this->table . ' where id="' . $input['id'] . '"';
-        $query = 'SELECT * FROM ' . $this->table . ' where '.$input['column_name'] .'="' . $input['column_value'] . '"';
+//        $query = 'SELECT * FROM ' . $this->table . ' where '.$input['column_name'] .'="' . $input['column_value'] . '"';
+        $query = 'SELECT * FROM ' . $this->table . ' where ' . $input['where'];
         $statement = $this->connection->query($query);
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         return $results;

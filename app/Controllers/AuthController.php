@@ -3,11 +3,10 @@
 namespace App\Controllers;
 
 
-
 use App\Services\UserService;
 use App\Traits\ResponseTrait;
 
-class UserController
+class AuthController
 {
     use ResponseTrait;
 
@@ -18,14 +17,14 @@ class UserController
         $this->user_service = new UserService();
     }
 
-    public function viewRegister()
+    public function viewLogin()
     {
-        require_once APP_ROOT . '/views/users/register.php';
+        require_once APP_ROOT . '/views/users/login.php';
     }
 
-    public function register()
+    public function login()
     {
-        $response = $this->user_service->insert([
+        $response = $this->user_service->show([
             'username' => $_POST['username'],
             'password' => md5($_POST['password']),
         ]);
